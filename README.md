@@ -11,6 +11,7 @@ Create a 'brotli' symlink or checkout the brotli repo in the libbrotli root.
 
 Then run:
 
+    $ libtoolize
     $ aclocal
     $ autoheader
     $ autoconf
