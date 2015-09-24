@@ -19,9 +19,13 @@ Then run:
     $ ./configure
     $ make
 
-... and then to install libbrotli:
+# Install
 
     $ make install
+
+Installs the library and the necessary include files. The include files are
+placed in a brotli subdir so include them like &lt;brotli/decode.h&gt;.
+
 
 # License
 
