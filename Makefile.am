@@ -5,7 +5,8 @@ ACLOCAL_AMFLAGS = -I .
 lib_LTLIBRARIES = libbrotli.la
 
 CSOURCES = brotli/dec/bit_reader.c brotli/dec/decode.c		\
-  brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c
+  brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c  \
+  brotli/dec/dictionary.c
 
 HHEADERS = 
 
