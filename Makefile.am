@@ -16,7 +16,8 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libbrotli.pc
 pkgincludedir= $(includedir)/brotli
 pkginclude_HEADERS = brotli/dec/decode.h brotli/dec/state.h	\
- brotli/dec/streams.h brotli/dec/types.h
+ brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h \
+ brotli/dec/huffman.h
 
 LIBBROTLI_VERSION_INFO = -version-info 1:0:0
 # This flag accepts an argument of the form current[:revision[:age]]. So,
