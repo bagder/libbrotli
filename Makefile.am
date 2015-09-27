@@ -4,10 +4,26 @@ ACLOCAL_AMFLAGS = -I .
 
 lib_LTLIBRARIES = libbrotli.la
 
-CSOURCES = brotli/dec/bit_reader.c brotli/dec/decode.c		\
-  brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c  \
+DECODE = brotli/dec/bit_reader.c brotli/dec/decode.c		\
+  brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c	\
   brotli/dec/dictionary.c
 
+ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
+ brotli/enc/block_splitter.cc brotli/enc/literal_cost.cc		\
+ brotli/enc/brotli_bit_stream.cc brotli/enc/metablock.cc		\
+ brotli/enc/encode.cc brotli/enc/static_dict.cc				\
+ brotli/enc/encode_parallel.cc brotli/enc/streams.cc			\
+ brotli/enc/entropy_encode.cc
+
+DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
+ brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h	\
+ brotli/dec/huffman.h brotli/dec/port.h
+
+ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
+ brotli/enc/hash.h brotli/enc/ringbuffer.h brotli/enc/static_dict.h	\
+ brotli/enc/streams.h
+
+CSOURCES = $(DECODE) $(ENCODE)
 HHEADERS = 
 
 EXTRA_DIST = AUTHORS README
@@ -15,9 +31,7 @@ EXTRA_DIST = AUTHORS README
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libbrotli.pc
 pkgincludedir= $(includedir)/brotli
-pkginclude_HEADERS = brotli/dec/decode.h brotli/dec/state.h	\
- brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h \
- brotli/dec/huffman.h brotli/dec/port.h
+pkginclude_HEADERS = 
 
 LIBBROTLI_VERSION_INFO = -version-info 1:0:0
 # This flag accepts an argument of the form current[:revision[:age]]. So,
@@ -59,11 +73,24 @@ libbrotli_la_CFLAGS_EXTRA =
 libbrotli_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
 
 libbrotli_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
+libbrotli_la_CXXFLAGS = -std=c++11
 libbrotli_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
 libbrotli_la_SOURCES = $(CSOURCES) $(HHEADERS)
 
 # where to install the c-ares headers
 libbrotli_ladir = $(includedir)
+
+dist-hook:
+	mkdir -p $(distdir)/include/brotli/enc
+	mkdir -p $(distdir)/include/brotli/dec
+	for a in $(ENCODEHEADERS); do cp $$a $(distdir)/include/brotli/enc; done
+	for a in $(DECODEHEADERS); do cp $$a $(distdir)/include/brotli/dec; done
+
+install-data-hook:
+	mkdir -p $(DESTDIR)$(pkgincludedir)/enc
+	mkdir -p $(DESTDIR)$(pkgincludedir)/dec
+	for a in $(ENCODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/enc; done
+	for a in $(DECODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/dec; done
 
 brotli:
 	echo "Install symlink 'brotli' to brotli source code root"
