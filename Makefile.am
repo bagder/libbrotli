@@ -21,7 +21,9 @@ DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
 
 ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
  brotli/enc/hash.h brotli/enc/ringbuffer.h brotli/enc/static_dict.h	\
- brotli/enc/streams.h
+ brotli/enc/streams.h brotli/enc/fast_log.h brotli/enc/prefix.h         \
+ brotli/enc/dictionary_hash.h brotli/enc/find_match_length.h            \
+ brotli/enc/port.h brotli/enc/transform.h brotli/enc/dictionary.h
 
 CSOURCES = $(DECODE) $(ENCODE)
 HHEADERS = 
