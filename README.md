@@ -3,7 +3,8 @@
 Wrapper scripts and code around the brotli code base.
 
 Builds a "libbrotli" library out of the
-[brotli](https://github.com/google/brotli) decoder source. Uses autotools.
+[brotli](https://github.com/google/brotli) decode and encode sources. Uses
+autotools.
 
 # Build
 
