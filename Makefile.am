@@ -31,7 +31,7 @@ EXTRA_DIST = AUTHORS README
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libbrotli.pc
 pkgincludedir= $(includedir)/brotli
-pkginclude_HEADERS = $(DECODEHEADERS) $(ENCODEHEADERS)
+pkginclude_HEADERS = 
 
 LIBBROTLI_VERSION_INFO = -version-info 1:0:0
 # This flag accepts an argument of the form current[:revision[:age]]. So,
@@ -79,6 +79,18 @@ libbrotli_la_SOURCES = $(CSOURCES) $(HHEADERS)
 
 # where to install the c-ares headers
 libbrotli_ladir = $(includedir)
+
+dist-hook:
+	mkdir -p $(distdir)/include/brotli/enc
+	mkdir -p $(distdir)/include/brotli/dec
+	for a in $(ENCODEHEADERS); do cp $$a $(distdir)/include/brotli/enc; done
+	for a in $(DECODEHEADERS); do cp $$a $(distdir)/include/brotli/dec; done
+
+install-data-hook:
+	mkdir -p $(DESTDIR)$(pkgincludedir)/enc
+	mkdir -p $(DESTDIR)$(pkgincludedir)/dec
+	for a in $(ENCODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/enc; done
+	for a in $(DECODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/dec; done
 
 brotli:
 	echo "Install symlink 'brotli' to brotli source code root"
