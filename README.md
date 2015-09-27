@@ -27,6 +27,16 @@ Then run:
 Installs the library and the necessary include files. The include files are
 placed in a brotli subdir so include them like &lt;brotli/decode.h&gt;.
 
+# Header files
+
+When installing libbrotli, we decided to install the header files in the
+brotli/enc and brotli/dec subdirectories. This is because the brotli team has
+made public headers for encoding and decoding that use the same name but have
+different contents so we cannot put all headers in the same directory.
+
+This is filed as [issue 181](https://github.com/google/brotli/issues/181) with
+the brotli project.
+
 
 # License
 
