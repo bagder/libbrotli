@@ -14,6 +14,10 @@ fi
 
 $GIT submodule init
 $GIT submodule update
+
+# create m4 before autoreconf
+mkdir m4 2>/dev/null
+
 $AUTORECONF --install --force --symlink || exit $?
 
 echo

@@ -3,8 +3,9 @@ AC_PREREQ(2.57)
 AC_INIT([libbrotli], [-], [-])
 AC_CONFIG_SRCDIR([brotli/dec/decode.h])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE()
+AC_CONFIG_MACRO_DIR([m4])
 LT_INIT
+AM_INIT_AUTOMAKE()
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
