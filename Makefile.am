@@ -79,7 +79,7 @@ libbrotli_la_CXXFLAGS = -std=c++11
 libbrotli_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
 libbrotli_la_SOURCES = $(CSOURCES) $(HHEADERS)
 
-# where to install the c-ares headers
+# where to install the brotli headers
 libbrotli_ladir = $(includedir)
 
 dist-hook:
