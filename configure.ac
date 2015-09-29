@@ -1,6 +1,6 @@
 AC_PREREQ(2.57)
 
-AC_INIT([libbrotli], [-], [-])
+AC_INIT([libbrotli], [0.1.0], [-])
 AC_CONFIG_SRCDIR([brotli/dec/decode.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
