@@ -2,9 +2,12 @@
 
 Wrapper scripts and code around the brotli code base.
 
-Builds a "libbrotli" library out of the
-[brotli](https://github.com/google/brotli) decode and encode sources. Uses
-autotools.
+Builds libraries out of the [brotli](https://github.com/google/brotli) decode
+and encode sources. Uses autotools.
+
+'brotlidec' is the library for decoding, decompression
+
+'brotlienc' is the library for encoding, compression
 
 # Build
 
@@ -22,8 +25,9 @@ Then run:
 
 	$ make install
 
-Installs the library and the necessary include files. The include files are
-placed in a brotli subdir so include them like &lt;brotli/decode.h&gt;.
+Installs the libraries and the necessary include files. The include files are
+placed in a brotli subdir so include them like &lt;brotli/dec/decode.h&gt; and
+&lt;brotli/enc/encode.h&gt;
 
 # Header files
 
@@ -35,6 +39,8 @@ different contents so we cannot put all headers in the same directory.
 This is filed as [issue 181](https://github.com/google/brotli/issues/181) with
 the brotli project.
 
+NOTE: we then split libbrotli into two libraries anyway so the two different
+include directories make sense now!
 
 # License
 
