@@ -8,21 +8,19 @@ autotools.
 
 # Build
 
-Create a 'brotli' symlink or checkout the brotli repo in the libbrotli root.
+Clone the libbrotli repository, e.g.
+
+	$ git clone https://github.com/bagder/libbrotli
 
 Then run:
 
-    $ libtoolize
-    $ aclocal
-    $ autoheader
-    $ autoconf
-    $ automake --add-missing
-    $ ./configure
-    $ make
+	$ ./autogen.sh
+	$ ./configure
+	$ make
 
 # Install
 
-    $ make install
+	$ make install
 
 Installs the library and the necessary include files. The include files are
 placed in a brotli subdir so include them like &lt;brotli/decode.h&gt;.
