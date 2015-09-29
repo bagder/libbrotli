@@ -85,14 +85,14 @@ libbrotli_ladir = $(includedir)
 dist-hook:
 	mkdir -p $(distdir)/include/brotli/enc
 	mkdir -p $(distdir)/include/brotli/dec
-	for a in $(ENCODEHEADERS); do cp $$a $(distdir)/include/brotli/enc; done
-	for a in $(DECODEHEADERS); do cp $$a $(distdir)/include/brotli/dec; done
+	cp $(ENCODE) $(distdir)/include/brotli/enc
+	cp $(DECODE) $(distdir)/include/brotli/dec
 
 install-data-hook:
 	mkdir -p $(DESTDIR)$(pkgincludedir)/enc
 	mkdir -p $(DESTDIR)$(pkgincludedir)/dec
-	for a in $(ENCODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/enc; done
-	for a in $(DECODEHEADERS); do cp $$a $(DESTDIR)$(pkgincludedir)/dec; done
+	cp $(ENCODEHEADERS) $(DESTDIR)$(pkgincludedir)/enc
+	cp $(DECODEHEADERS) $(DESTDIR)$(pkgincludedir)/dec
 
 brotli:
 	echo "Install symlink 'brotli' to brotli source code root"
