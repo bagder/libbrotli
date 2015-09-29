@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign nostdinc subdir-objects
 
 ACLOCAL_AMFLAGS = -I m4
 
-lib_LTLIBRARIES = libbrotli.la
+lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
 DECODE = brotli/dec/bit_reader.c brotli/dec/decode.c		\
   brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c	\
@@ -31,11 +31,12 @@ HHEADERS =
 EXTRA_DIST = AUTHORS README
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libbrotli.pc
+pkgconfig_DATA = libbrotlienc.pc libbrotlidec.pc
 pkgincludedir= $(includedir)/brotli
 pkginclude_HEADERS = 
 
-LIBBROTLI_VERSION_INFO = -version-info 1:0:0
+LIBBROTLIENC_VERSION_INFO = -version-info 1:0:0
+LIBBROTLIDEC_VERSION_INFO = -version-info 1:0:0
 # This flag accepts an argument of the form current[:revision[:age]]. So,
 # passing -version-info 3:12:1 sets current to 3, revision to 12, and age to
 # 1.
@@ -64,23 +65,22 @@ LIBBROTLI_VERSION_INFO = -version-info 1:0:0
 # set age to 0. (c:r:a=0)
 #
 
-AM_LDFLAGS =
+libbrotlienc_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
+libbrotlidec_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
 
-libbrotli_la_LDFLAGS_EXTRA =
+libbrotlidec_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
+libbrotlidec_la_CXXFLAGS = -std=c++11
+libbrotlidec_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
+libbrotlidec_la_SOURCES = $(DECODE) $(DECODEHEADERS)
 
-libbrotli_la_LDFLAGS = $(AM_LDFLAGS) $(libbrotli_la_LDFLAGS_EXTRA)
-
-libbrotli_la_CFLAGS_EXTRA =
-
-libbrotli_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
-
-libbrotli_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
-libbrotli_la_CXXFLAGS = -std=c++11
-libbrotli_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
-libbrotli_la_SOURCES = $(CSOURCES) $(HHEADERS)
+libbrotlienc_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
+libbrotlienc_la_CXXFLAGS = -std=c++11
+libbrotlienc_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
+libbrotlienc_la_SOURCES = $(ENCODE) $(ENCODEHEADERS)
 
 # where to install the brotli headers
-libbrotli_ladir = $(includedir)
+libbrotlienc_ladir = $(includedir)
+libbrotlidec_ladir = $(includedir)
 
 dist-hook:
 	mkdir -p $(distdir)/include/brotli/enc

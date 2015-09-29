@@ -11,5 +11,5 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_PROG_CXX
 
-AC_CONFIG_FILES([Makefile libbrotli.pc])
+AC_CONFIG_FILES([Makefile libbrotlienc.pc libbrotlidec.pc])
 AC_OUTPUT
