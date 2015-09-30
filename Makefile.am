@@ -17,18 +17,25 @@ ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
 
 DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
  brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h	\
- brotli/dec/huffman.h brotli/dec/port.h
+ brotli/dec/huffman.h brotli/dec/port.h brotli/dec/context.h            \
+ brotli/dec/dictionary.h brotli/dec/transform.h brotli/dec/prefix.h
 
 ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
  brotli/enc/hash.h brotli/enc/ringbuffer.h brotli/enc/static_dict.h	\
  brotli/enc/streams.h brotli/enc/fast_log.h brotli/enc/prefix.h         \
  brotli/enc/dictionary_hash.h brotli/enc/find_match_length.h            \
- brotli/enc/port.h brotli/enc/transform.h brotli/enc/dictionary.h
-
-CSOURCES = $(DECODE) $(ENCODE)
-HHEADERS = 
+ brotli/enc/port.h brotli/enc/transform.h brotli/enc/dictionary.h       \
+ brotli/enc/backward_references.h brotli/enc/histogram.h                \
+ brotli/enc/block_splitter.h brotli/enc/metablock.h brotli/enc/context.h\
+ brotli/enc/literal_cost.h brotli/enc/cluster.h brotli/enc/bit_cost.h   \
+ brotli/enc/entropy_encode.h brotli/enc/brotli_bit_stream.h             \
+ brotli/enc/write_bits.h brotli/enc/static_dict_lut.h                   \
+ brotli/enc/encode_parallel.h
 
 EXTRA_DIST = AUTHORS README
+
+# install headers in $(includedir) with subdirs
+nobase_include_HEADERS = $(DECODEHEADERS) $(ENCODEHEADERS)
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libbrotlienc.pc libbrotlidec.pc
@@ -81,18 +88,6 @@ libbrotlienc_la_SOURCES = $(ENCODE) $(ENCODEHEADERS)
 # where to install the brotli headers
 libbrotlienc_ladir = $(includedir)
 libbrotlidec_ladir = $(includedir)
-
-dist-hook:
-	mkdir -p $(distdir)/include/brotli/enc
-	mkdir -p $(distdir)/include/brotli/dec
-	cp $(ENCODE) $(distdir)/include/brotli/enc
-	cp $(DECODE) $(distdir)/include/brotli/dec
-
-install-data-hook:
-	mkdir -p $(DESTDIR)$(pkgincludedir)/enc
-	mkdir -p $(DESTDIR)$(pkgincludedir)/dec
-	cp $(ENCODEHEADERS) $(DESTDIR)$(pkgincludedir)/enc
-	cp $(DECODEHEADERS) $(DESTDIR)$(pkgincludedir)/dec
 
 brotli:
 	echo "Install symlink 'brotli' to brotli source code root"
