@@ -14,8 +14,10 @@ config.sub
 configure
 depcomp
 install-sh
-libbrotli.la
-libbrotli.pc
+libbrotlidec.la
+libbrotlidec.pc
+libbrotlienc.la
+libbrotlienc.pc
 libtool
 ltmain.sh
 m4/
