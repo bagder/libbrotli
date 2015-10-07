@@ -13,8 +13,7 @@ ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
  brotli/enc/brotli_bit_stream.cc brotli/enc/metablock.cc		\
  brotli/enc/encode.cc brotli/enc/static_dict.cc				\
  brotli/enc/encode_parallel.cc brotli/enc/streams.cc			\
- brotli/enc/entropy_encode.cc brotli/enc/dictionary.cc and		\
- brotli/enc/utf8_util.cc.
+ brotli/enc/entropy_encode.cc brotli/enc/utf8_util.cc                   
 
 DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
  brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h	\
