@@ -11,6 +11,8 @@ and encode sources. Uses autotools.
 
 # Build
 
+First make sure you have `libtool`, `autoconf` and `automake` installed.
+
 Clone the libbrotli repository, e.g.
 
 	$ git clone https://github.com/bagder/libbrotli
