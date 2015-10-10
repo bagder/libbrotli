@@ -41,3 +41,7 @@ in your source code.
 
 Consider these build files MIT licensed. brotli itself has its own
 [license](https://github.com/google/brotli/blob/master/LICENSE)
+
+# Server-side brotli
+
+See [ngx_brotli_module](https://github.com/cloudflare/ngx_brotli_module)
