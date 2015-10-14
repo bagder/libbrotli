@@ -41,8 +41,10 @@ in your source code.
 
 # License
 
-Consider these build files MIT licensed. brotli itself has its own
-[license](https://github.com/google/brotli/blob/master/LICENSE)
+Consider these build files MIT licensed. brotli itself has its own [Apache v2
+license](https://github.com/google/brotli/blob/master/LICENSE).
+
+[The Apache v2 license is not considered compatible with GPLv2](http://www.apache.org/licenses/GPL-compatibility.html)
 
 # Server-side brotli
 
