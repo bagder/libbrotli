@@ -76,14 +76,14 @@ LIBBROTLIDEC_VERSION_INFO = -version-info 1:0:0
 libbrotlidec_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
 libbrotlidec_la_LDFLAGS = $(AM_LDFLAGS) $(LIBBROTLIDEC_VERSION_INFO) $(LDFLAGS)
 libbrotlidec_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
-libbrotlidec_la_CXXFLAGS = -std=c++11
+libbrotlidec_la_CXXFLAGS =
 libbrotlidec_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
 libbrotlidec_la_SOURCES = $(DECODE) $(DECODEHEADERS)
 
 libbrotlienc_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
 libbrotlienc_la_LDFLAGS = $(AM_LDFLAGS) $(LIBBROTLIENC_VERSION_INFO) $(LDFLAGS)
 libbrotlienc_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
-libbrotlienc_la_CXXFLAGS = -std=c++11
+libbrotlienc_la_CXXFLAGS =
 libbrotlienc_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
 libbrotlienc_la_SOURCES = $(ENCODE) $(ENCODEHEADERS)
 
