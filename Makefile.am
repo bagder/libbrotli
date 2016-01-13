@@ -14,7 +14,8 @@ ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
  brotli/enc/encode.cc brotli/enc/static_dict.cc				\
  brotli/enc/encode_parallel.cc brotli/enc/streams.cc			\
  brotli/enc/entropy_encode.cc brotli/enc/dictionary.cc			\
- brotli/enc/utf8_util.cc
+ brotli/enc/utf8_util.cc brotli/enc/compress_fragment.cc			\
+ brotli/enc/compress_fragment_two_pass.cc
 
 DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
  brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h	\
@@ -31,7 +32,8 @@ ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
  brotli/enc/literal_cost.h brotli/enc/cluster.h brotli/enc/bit_cost.h   \
  brotli/enc/entropy_encode.h brotli/enc/brotli_bit_stream.h             \
  brotli/enc/write_bits.h brotli/enc/static_dict_lut.h                   \
- brotli/enc/encode_parallel.h brotli/enc/types.h
+ brotli/enc/encode_parallel.h brotli/enc/types.h    \
+ brotli/enc/compress_fragment.h brotli/enc/compress_fragment_two_pass.h
 
 EXTRA_DIST = AUTHORS README
 
