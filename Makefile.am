@@ -32,7 +32,7 @@ ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
  brotli/enc/literal_cost.h brotli/enc/cluster.h brotli/enc/bit_cost.h   \
  brotli/enc/entropy_encode.h brotli/enc/brotli_bit_stream.h             \
  brotli/enc/write_bits.h brotli/enc/static_dict_lut.h                   \
- brotli/enc/encode_parallel.h brotli/enc/types.h    \
+ brotli/enc/encode_parallel.h brotli/enc/types.h brotli/enc/utf8_util.h \
  brotli/enc/compress_fragment.h brotli/enc/compress_fragment_two_pass.h
 
 EXTRA_DIST = AUTHORS README
