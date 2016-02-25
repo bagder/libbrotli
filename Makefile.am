@@ -5,7 +5,7 @@ ACLOCAL_AMFLAGS = -I m4
 lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
 DECODE = brotli/dec/bit_reader.c brotli/dec/decode.c		\
-  brotli/dec/huffman.c brotli/dec/state.c brotli/dec/streams.c	\
+  brotli/dec/huffman.c brotli/dec/state.c 	\
   brotli/dec/dictionary.c
 
 ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
@@ -18,7 +18,7 @@ ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
  brotli/enc/compress_fragment_two_pass.cc
 
 DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
- brotli/dec/streams.h brotli/dec/types.h brotli/dec/bit_reader.h	\
+ brotli/dec/types.h brotli/dec/bit_reader.h	\
  brotli/dec/huffman.h brotli/dec/port.h brotli/dec/context.h            \
  brotli/dec/dictionary.h brotli/dec/transform.h brotli/dec/prefix.h
 
