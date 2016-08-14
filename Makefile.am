@@ -5,36 +5,41 @@ ACLOCAL_AMFLAGS = -I m4
 lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
 DECODE = brotli/dec/bit_reader.c brotli/dec/decode.c		\
-  brotli/dec/huffman.c brotli/dec/state.c 	\
-  brotli/dec/dictionary.c
+  brotli/dec/huffman.c brotli/dec/state.c
 
-ENCODE = brotli/enc/backward_references.cc brotli/enc/histogram.cc	\
- brotli/enc/block_splitter.cc brotli/enc/literal_cost.cc		\
- brotli/enc/brotli_bit_stream.cc brotli/enc/metablock.cc		\
- brotli/enc/encode.cc brotli/enc/static_dict.cc				\
+ENCODE = brotli/enc/backward_references.c brotli/enc/histogram.c	\
+ brotli/enc/block_splitter.c brotli/enc/literal_cost.c		\
+ brotli/enc/brotli_bit_stream.c brotli/enc/metablock.c		\
+ brotli/enc/encode.c brotli/enc/static_dict.c				\
  brotli/enc/encode_parallel.cc brotli/enc/streams.cc			\
- brotli/enc/entropy_encode.cc brotli/enc/dictionary.cc			\
- brotli/enc/utf8_util.cc brotli/enc/compress_fragment.cc			\
- brotli/enc/compress_fragment_two_pass.cc
+ brotli/enc/entropy_encode.c			\
+ brotli/enc/utf8_util.c brotli/enc/compress_fragment.c			\
+ brotli/enc/compress_fragment_two_pass.c brotli/enc/compressor.cc \
+ brotli/enc/cluster.c brotli/enc/memory.c brotli/enc/bit_cost.c
 
 DECODEHEADERS = brotli/dec/decode.h brotli/dec/state.h			\
- brotli/dec/types.h brotli/dec/bit_reader.h	\
+ brotli/dec/bit_reader.h	\
  brotli/dec/huffman.h brotli/dec/port.h brotli/dec/context.h            \
- brotli/dec/dictionary.h brotli/dec/transform.h brotli/dec/prefix.h
+ brotli/dec/transform.h brotli/dec/prefix.h
 
 ENCODEHEADERS = brotli/enc/encode.h brotli/enc/command.h		\
  brotli/enc/hash.h brotli/enc/ringbuffer.h brotli/enc/static_dict.h	\
  brotli/enc/streams.h brotli/enc/fast_log.h brotli/enc/prefix.h         \
  brotli/enc/dictionary_hash.h brotli/enc/find_match_length.h            \
- brotli/enc/port.h brotli/enc/transform.h brotli/enc/dictionary.h       \
- brotli/enc/backward_references.h brotli/enc/histogram.h                \
+ brotli/enc/port.h brotli/enc/backward_references.h brotli/enc/histogram.h \
  brotli/enc/block_splitter.h brotli/enc/metablock.h brotli/enc/context.h\
  brotli/enc/literal_cost.h brotli/enc/cluster.h brotli/enc/bit_cost.h   \
  brotli/enc/entropy_encode.h brotli/enc/brotli_bit_stream.h             \
  brotli/enc/write_bits.h brotli/enc/static_dict_lut.h                   \
- brotli/enc/encode_parallel.h brotli/enc/types.h brotli/enc/utf8_util.h \
+ brotli/enc/encode_parallel.h brotli/enc/utf8_util.h                    \
  brotli/enc/compress_fragment.h brotli/enc/compress_fragment_two_pass.h \
- brotli/enc/entropy_encode_static.h brotli/enc/compressor.h
+ brotli/enc/entropy_encode_static.h brotli/enc/compressor.h             \
+ brotli/enc/bit_cost_inc.h brotli/enc/block_splitter_inc.h              \
+ brotli/enc/backward_references_inc.h brotli/enc/quality.h              \
+ brotli/enc/metablock_inc.h brotli/enc/block_encoder_inc.h              \
+ brotli/enc/hash_longest_match_quickly_inc.h                            \
+ brotli/enc/hash_forgetful_chain_inc.h brotli/enc/hash_longest_match_inc.h \
+ brotli/enc/memory.h brotli/enc/cluster_inc.h brotli/enc/histogram_inc.h
 
 EXTRA_DIST = AUTHORS README
 
