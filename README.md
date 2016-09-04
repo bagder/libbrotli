@@ -34,8 +34,8 @@ Installs the libraries and the necessary include files.
 The include files are placed in a brotli subdir under the install prefix so
 include them like
 
-	#include <brotli/dec/decode.h>
-	#include <brotli/enc/encode.h>
+	#include <brotli/decode.h>
+	#include <brotli/encode.h>
 
 in your source code.
 
