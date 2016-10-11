@@ -38,7 +38,7 @@ ENCODEHEADERS = brotli/enc/backward_references.h				\
  brotli/enc/fast_log.h brotli/enc/write_bits.h brotli/enc/find_match_length.h
 
 COMMONHEADERS = brotli/include/brotli/decode.h brotli/include/brotli/types.h	\
- brotli/include/brotli/encode.h
+ brotli/include/brotli/encode.h brotli/include/brotli/port.h
 
 CPPFLAGS=-Ibrotli/include
 
