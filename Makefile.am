@@ -4,57 +4,66 @@ ACLOCAL_AMFLAGS = -I m4
 
 lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
-DECODE = brotli/dec/bit_reader.c brotli/dec/decode.c		\
-  brotli/dec/huffman.c brotli/dec/state.c
+DECODE = brotli/c/dec/bit_reader.c brotli/c/dec/decode.c  \
+  brotli/c/dec/huffman.c brotli/c/dec/state.c             \
+  brotli/c/common/dictionary.c
 
-ENCODE = brotli/enc/backward_references.c brotli/enc/histogram.c		\
- brotli/enc/block_splitter.c brotli/enc/literal_cost.c				\
- brotli/enc/brotli_bit_stream.c brotli/enc/metablock.c brotli/enc/encode.c	\
- brotli/enc/static_dict.c brotli/enc/entropy_encode.c brotli/enc/utf8_util.c	\
- brotli/enc/compress_fragment.c brotli/enc/compress_fragment_two_pass.c		\
- brotli/enc/cluster.c brotli/enc/memory.c brotli/enc/bit_cost.c
+ENCODE = brotli/c/enc/backward_references.c brotli/c/enc/histogram.c   \
+ brotli/c/enc/block_splitter.c brotli/c/enc/literal_cost.c             \
+ brotli/c/enc/brotli_bit_stream.c brotli/c/enc/metablock.c             \
+ brotli/c/enc/encode.c brotli/c/enc/static_dict.c                      \
+ brotli/c/enc/entropy_encode.c brotli/c/common/dictionary.c            \
+ brotli/c/enc/utf8_util.c brotli/c/enc/compress_fragment.c             \
+ brotli/c/enc/compress_fragment_two_pass.c brotli/c/enc/memory.c       \
+ brotli/c/enc/backward_references_hq.c brotli/c/enc/bit_cost.c         \
+ brotli/c/enc/dictionary_hash.c brotli/c/enc/cluster.c
 
-COMMON = brotli/common/dictionary.c
+DECODEHEADERS = brotli/c/include/brotli/decode.h brotli/c/dec/state.h  \
+ brotli/c/include/brotli/types.h brotli/c/dec/bit_reader.h             \
+ brotli/c/dec/huffman.h brotli/c/include/brotli/port.h                 \
+ brotli/c/dec/context.h brotli/c/dec/prefix.h                          \
+ brotli/c/common/constants.h brotli/c/common/dictionary.h              \
+ brotli/c/common/version.h brotli/c/dec/transform.h brotli/c/dec/port.h
 
-DECODEHEADERS = brotli/dec/bit_reader.h brotli/dec/port.h		\
- brotli/dec/transform.h brotli/dec/context.h brotli/dec/prefix.h	\
- brotli/dec/huffman.h brotli/dec/state.h
 
-ENCODEHEADERS = brotli/enc/backward_references.h				\
- brotli/enc/hash_forgetful_chain_inc.h brotli/enc/backward_references_inc.h	\
- brotli/enc/hash.h brotli/enc/bit_cost.h brotli/enc/hash_longest_match_inc.h	\
- brotli/enc/bit_cost_inc.h brotli/enc/hash_longest_match_quickly_inc.h		\
- brotli/enc/block_encoder_inc.h brotli/enc/histogram.h				\
- brotli/enc/block_splitter.h brotli/enc/histogram_inc.h				\
- brotli/enc/block_splitter_inc.h brotli/enc/literal_cost.h			\
- brotli/enc/brotli_bit_stream.h brotli/enc/memory.h brotli/enc/cluster.h	\
- brotli/enc/metablock.h brotli/enc/cluster_inc.h brotli/enc/metablock_inc.h	\
- brotli/enc/command.h brotli/enc/port.h brotli/enc/compress_fragment.h		\
- brotli/enc/prefix.h brotli/enc/compress_fragment_two_pass.h			\
- brotli/enc/quality.h brotli/enc/context.h brotli/enc/ringbuffer.h		\
- brotli/enc/dictionary_hash.h brotli/enc/static_dict.h				\
- brotli/enc/entropy_encode.h brotli/enc/static_dict_lut.h			\
- brotli/enc/entropy_encode_static.h brotli/enc/utf8_util.h			\
- brotli/enc/fast_log.h brotli/enc/write_bits.h brotli/enc/find_match_length.h
+ENCODEHEADERS = brotli/c/include/brotli/encode.h brotli/c/enc/command.h     \
+ brotli/c/enc/hash.h brotli/c/enc/ringbuffer.h brotli/c/enc/static_dict.h   \
+ brotli/c/enc/fast_log.h brotli/c/enc/prefix.h                              \
+ brotli/c/enc/dictionary_hash.h brotli/c/enc/find_match_length.h            \
+ brotli/c/enc/backward_references.h brotli/c/enc/histogram.h                \
+ brotli/c/enc/block_splitter.h brotli/c/enc/metablock.h                     \
+ brotli/c/enc/context.h brotli/c/enc/literal_cost.h brotli/c/enc/cluster.h  \
+ brotli/c/enc/bit_cost.h brotli/c/enc/entropy_encode.h                      \
+ brotli/c/enc/brotli_bit_stream.h brotli/c/enc/write_bits.h                 \
+ brotli/c/enc/static_dict_lut.h brotli/c/enc/utf8_util.h                    \
+ brotli/c/enc/compress_fragment.h brotli/c/enc/compress_fragment_two_pass.h \
+ brotli/c/enc/entropy_encode_static.h brotli/c/enc/memory.h                 \
+ brotli/c/enc/backward_references_inc.h brotli/c/enc/cluster_inc.h          \
+ brotli/c/enc/bit_cost_inc.h brotli/c/enc/quality.h brotli/c/enc/port.h     \
+ brotli/c/enc/hash_forgetful_chain_inc.h brotli/c/enc/metablock_inc.h       \
+ brotli/c/enc/hash_longest_match64_inc.h                                    \
+ brotli/c/enc/backward_references_hq.h brotli/c/enc/histogram_inc.h         \
+ brotli/c/enc/block_encoder_inc.h brotli/c/enc/hash_longest_match_inc.h     \
+ brotli/c/enc/hash_longest_match_quickly_inc.h                              \
+ brotli/c/enc/hash_to_binary_tree_inc.h brotli/c/enc/block_splitter_inc.h   \
+ brotli/c/include/brotli/port.h brotli/c/include/brotli/types.h
 
-COMMONHEADERS = brotli/include/brotli/decode.h brotli/include/brotli/types.h	\
- brotli/include/brotli/encode.h brotli/include/brotli/port.h
-
-CPPFLAGS=-Ibrotli/include
+INSTALLHEADERS = brotli/c/include/brotli/decode.h \
+ brotli/c/include/brotli/encode.h \
+ brotli/c/include/brotli/port.h   \
+ brotli/c/include/brotli/types.h
 
 EXTRA_DIST = AUTHORS README
 
-# install headers in $(includedir) with subdirs
-includedir = $(prefix)/include/brotli
-include_HEADERS = $(COMMONHEADERS)
+# install headers in $(includedir)/brotli
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libbrotlienc.pc libbrotlidec.pc
 pkgincludedir= $(includedir)/brotli
-pkginclude_HEADERS = 
+pkginclude_HEADERS = $(INSTALLHEADERS)
 
-LIBBROTLIENC_VERSION_INFO = -version-info 1:0:0
-LIBBROTLIDEC_VERSION_INFO = -version-info 1:0:0
+LIBBROTLIENC_VERSION_INFO = -version-info 1:0:1
+LIBBROTLIDEC_VERSION_INFO = -version-info 1:0:1
 # This flag accepts an argument of the form current[:revision[:age]]. So,
 # passing -version-info 3:12:1 sets current to 3, revision to 12, and age to
 # 1.
@@ -87,15 +96,15 @@ libbrotlidec_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
 libbrotlidec_la_LDFLAGS = $(AM_LDFLAGS) $(LIBBROTLIDEC_VERSION_INFO) $(LDFLAGS)
 libbrotlidec_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
 libbrotlidec_la_CXXFLAGS =
-libbrotlidec_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
-libbrotlidec_la_SOURCES = $(DECODE) $(DECODEHEADERS) $(COMMON) #$(COMMONHEADERS)
+libbrotlidec_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA) -I$(srcdir)/brotli/c/include
+libbrotlidec_la_SOURCES = $(DECODE) $(DECODEHEADERS)
 
 libbrotlienc_la_CPPFLAGS_EXTRA = -DBROTLI_BUILDING_LIBRARY
-libbrotlienc_la_LDFLAGS = $(AM_LDFLAGS) $(LIBBROTLIENC_VERSION_INFO) $(LDFLAGS) -lm
+libbrotlienc_la_LDFLAGS = $(AM_LDFLAGS) $(LIBBROTLIENC_VERSION_INFO) $(LDFLAGS)
 libbrotlienc_la_CFLAGS = $(AM_CFLAGS) $(libbrotli_la_CFLAGS_EXTRA)
 libbrotlienc_la_CXXFLAGS =
-libbrotlienc_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA)
-libbrotlienc_la_SOURCES = $(ENCODE) $(ENCODEHEADERS) $(COMMON) #$(COMMONHEADERS)
+libbrotlienc_la_CPPFLAGS = $(AM_CPPFLAGS) $(libbrotli_la_CPPFLAGS_EXTRA) -I$(srcdir)/brotli/c/include
+libbrotlienc_la_SOURCES = $(ENCODE) $(ENCODEHEADERS)
 
 # where to install the brotli headers
 libbrotlienc_ladir = $(includedir)
