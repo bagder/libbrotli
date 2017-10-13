@@ -7,9 +7,12 @@ AC_CONFIG_MACRO_DIR([m4])
 LT_INIT
 AM_INIT_AUTOMAKE()
 AM_MAINTAINER_MODE
+AM_INIT_AUTOMAKE([subdir-objects])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_PROG_CC
 
-AC_CONFIG_FILES([Makefile libbrotlienc.pc libbrotlidec.pc])
+dnl AC_PATH_PROG(BROTLI	, brotli, /usr/bin/brotli)
+
+AC_CONFIG_FILES([Makefile libbrotlienc.pc libbrotlidec.pc tools/Makefile])
 AC_OUTPUT

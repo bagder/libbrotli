@@ -2,6 +2,8 @@ AUTOMAKE_OPTIONS = foreign nostdinc subdir-objects
 
 ACLOCAL_AMFLAGS = -I m4
 
+SUBDIRS = . tools
+
 lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
 DECODE = brotli/c/dec/bit_reader.c brotli/c/dec/decode.c  \
@@ -24,7 +26,6 @@ DECODEHEADERS = brotli/c/include/brotli/decode.h brotli/c/dec/state.h  \
  brotli/c/dec/context.h brotli/c/dec/prefix.h                          \
  brotli/c/common/constants.h brotli/c/common/dictionary.h              \
  brotli/c/common/version.h brotli/c/dec/transform.h brotli/c/dec/port.h
-
 
 ENCODEHEADERS = brotli/c/include/brotli/encode.h brotli/c/enc/command.h     \
  brotli/c/enc/hash.h brotli/c/enc/ringbuffer.h brotli/c/enc/static_dict.h   \
