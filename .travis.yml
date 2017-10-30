@@ -1,0 +1,49 @@
+language: c
+sudo: required
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.7
+        packages:
+            - gcc-4.8
+            - clang-3.7
+
+matrix:
+    include:
+        - os: linux
+          compiler: gcc
+          dist: trusty
+          env: T=normal
+        - os: linux
+          compiler: clang
+          dist: trusty
+          env: T=normal
+        - os: osx
+          compiler: gcc
+          env: T=normal
+        - os: osx
+          compiler: clang
+          env: T=normal
+
+install:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update > /dev/null; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew reinstall libtool > /dev/null; fi
+
+before_script:
+    - ./autogen.sh
+
+script:
+    - |
+        if [ "$T" = "normal" ]; then
+             ./configure
+             make
+        fi
+
+# whitelist branches to avoid testing feature branches twice (as branch and as pull request)
+branches:
+    only:
+        - master
+
+notifications:
+  email: false
