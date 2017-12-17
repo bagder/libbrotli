@@ -14,5 +14,5 @@ AC_PROG_CC
 
 dnl AC_PATH_PROG(BROTLI	, brotli, /usr/bin/brotli)
 
-AC_CONFIG_FILES([Makefile libbrotlienc.pc libbrotlidec.pc tools/Makefile])
+AC_CONFIG_FILES([Makefile libbrotlienc.pc libbrotlidec.pc tools/Makefile docs/Makefile])
 AC_OUTPUT

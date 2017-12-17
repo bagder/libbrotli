@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign nostdinc subdir-objects
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = . tools
+SUBDIRS = . docs tools
 
 lib_LTLIBRARIES = libbrotlidec.la libbrotlienc.la
 
