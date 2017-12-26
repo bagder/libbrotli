@@ -63,8 +63,8 @@ pkgconfig_DATA = libbrotlienc.pc libbrotlidec.pc
 pkgincludedir= $(includedir)/brotli
 pkginclude_HEADERS = $(INSTALLHEADERS)
 
-LIBBROTLIENC_VERSION_INFO = -version-info 1:0:1
-LIBBROTLIDEC_VERSION_INFO = -version-info 1:0:1
+LIBBROTLIENC_VERSION_INFO = -version-info 2:0:0
+LIBBROTLIDEC_VERSION_INFO = -version-info 2:0:0
 # This flag accepts an argument of the form current[:revision[:age]]. So,
 # passing -version-info 3:12:1 sets current to 3, revision to 12, and age to
 # 1.
