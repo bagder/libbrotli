@@ -9,6 +9,16 @@ and encode sources. Uses autotools.
 
 'brotlienc' is the library for encoding, compression
 
+# DEPRECATED
+
+This library and effort made sense in the early days when no brotli library
+was provided by the brotli project. Once the brotli project started providing
+libraries by itself, this project turned deprecated.
+
+Switch to the "real" brotli project's library instead!
+
+This repository is kept around only for historic reasons.
+
 # Build
 
 First make sure you have `libtool`, `autoconf` and `automake` installed.
